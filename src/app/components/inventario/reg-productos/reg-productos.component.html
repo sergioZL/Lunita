@@ -1,0 +1,30 @@
+<div class="contenedor">
+    <mat-card>
+        <mat-form-field class="text-center" >
+          <input matInput [(ngModel)]="art.codigo" type="number" placeholder="Codigo">
+        </mat-form-field>
+        <mat-form-field class="text-center" >
+            <input matInput [(ngModel)]="art.descripcion" type="text" placeholder="Descripción">
+        </mat-form-field>
+        <mat-form-field class="text-center" >
+            <input matInput type="number" [(ngModel)]="art.costo" placeholder="Costo">
+        </mat-form-field>
+        <mat-form-field class="text-center" >
+            <input matInput type="number" [(ngModel)]="art.mayoreo" placeholder="Precio mayoreo">
+        </mat-form-field>
+        <mat-form-field class="text-center" >
+            <input matInput type="number" [(ngModel)]="art.menudeo" placeholder="Precio menudeo">
+        </mat-form-field>
+        <mat-form-field class="text-center" >
+                <input matInput type="text" type="text" [(ngModel)]="art.tipo" placeholder="Tipo">
+        </mat-form-field>
+        <mat-form-field class="text-center" >
+            <input matInput type="number" [(ngModel)]="art.minimo" placeholder="minimo">
+        </mat-form-field>
+        <mat-form-field class="text-center" >
+            <input matInput [(ngModel)]="art.departamento" placeholder="Departamento">
+        </mat-form-field>
+        <br>
+        <button mat-raised-button class="mat-primary" (click)="alta()">Registrar</button>
+    </mat-card>
+</div>

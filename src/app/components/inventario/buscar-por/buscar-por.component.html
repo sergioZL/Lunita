@@ -1,0 +1,56 @@
+<div class="contenedor">
+<mat-form-field>
+    <mat-select placeholder="Opciones" [(ngModel)]="seleccionada" name="operacion">
+      <mat-option *ngFor="let op of opcionesBusqueda" [value]="op.opcion">
+        {{op.opcion}}
+      </mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field>
+    <mat-select *ngIf="seleccionada == 'Departamento'"  placeholder="Departamento" [(ngModel)]="seleccion" name="operacion">
+      <mat-option  *ngFor="let op of opcionesBusqueda[0].opciones" [value]="op.nombre">
+        {{op.nombre}}
+      </mat-option>
+    </mat-select>
+    <mat-select *ngIf="seleccionada == 'nombre'"  placeholder="Descripción" [(ngModel)]="seleccion" name="operacion">
+      <mat-option  *ngFor="let op of opcionesBusqueda[1].opciones" [value]="op.nombre">
+        {{op.nombre}}
+      </mat-option>
+    </mat-select>
+    <mat-select *ngIf="seleccionada == 'Tipo'"  placeholder="Tipo" [(ngModel)]="seleccion" name="operacion">
+      <mat-option  *ngFor="let op of opcionesBusqueda[2].opciones" [value]="op.nombre">
+        {{op.nombre}}
+      </mat-option>
+    </mat-select>
+</mat-form-field>
+<button mat-raised-button (click)="Buscar()"><mat-icon>search</mat-icon> Buscar</button>
+</div>
+
+<br>
+<div class=" col-12">
+        <table class="table"  *ngIf="hayRegistros(); else sinarticulos">
+          <thead class="thead-dark">
+          <tr >
+            <th class="d-none d-md-table-cell">Codigo</th>
+            <th>Desc</th>
+            <th>Costo</th>
+            <th class="d-none d-md-table-cell">Mayoreo</th>
+            <th class="d-none d-md-table-cell">Menudeo</th>
+            <th>Tipo</th>
+            <th class="d-none d-md-table-cell">Minimo</th>
+            <th>Departamento</th>
+          </tr>
+          </thead>
+          <tr *ngFor="let art of articulos">
+            <td class="d-none d-md-table-cell">{{art.codigo}}</td>
+            <td>{{art.descripcion}}</td>
+            <td>{{art.costo}}</td>
+            <td class="d-none d-md-table-cell">{{art.mayoreo}}</td>
+            <td class="d-none d-md-table-cell">{{art.menudeo}}</td>
+            <td>{{art.tipo}}</td>
+            <td class="d-none d-md-table-cell">{{art.minimo}}</td>
+            <td>{{art.departamento}}</td>
+          </tr>
+        </table>
+      <ng-template #sinarticulos><p>No hay articulos relacionados con la busqueda.</p></ng-template>
+</div>

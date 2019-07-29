@@ -1,0 +1,32 @@
+
+<div class=" col-12">
+        <table class="table"  *ngIf="hayRegistros(); else sinarticulos">
+          <thead class="thead-dark">
+          <tr >
+            <th class="d-none d-md-table-cell">Codigo</th>
+            <th>Desc</th>
+            <th>Costo</th>
+            <th class="d-none d-md-table-cell">Mayoreo</th>
+            <th class="d-none d-md-table-cell">Menudeo</th>
+            <th class="d-none d-md-table-cell">Tipo</th>
+            <th class="d-none d-md-table-cell">Minimo</th>
+            <th class="d-none d-md-table-cell">Departamento</th>
+            <th>Del</th>
+            <th>Select</th>
+          </tr>
+          </thead>
+          <tr *ngFor="let art of articulos">
+            <td class="d-none d-md-table-cell">{{art.codigo}}</td>
+            <td>{{art.descripcion}}</td>
+            <td>{{art.costo}}</td>
+            <td class="d-none d-md-table-cell">{{art.mayoreo}}</td>
+            <td class="d-none d-md-table-cell">{{art.menudeo}}</td>
+            <td class="d-none d-md-table-cell">{{art.tipo}}</td>
+            <td class="d-none d-md-table-cell">{{art.minimo}}</td>
+            <td class="d-none d-md-table-cell">{{art.departamento}}</td>
+            <td><button mat-raised-button (click)="baja(art.codigo)"><mat-icon>remove_circle_outline</mat-icon></button></td>
+            <td><button mat-raised-button (click)="seleccionar(art.codigo)"><mat-icon>check_box</mat-icon></button></td>        
+          </tr>
+        </table>
+      <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+</div>  
