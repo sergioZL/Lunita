@@ -10,7 +10,7 @@ export class DialogService {
 
   openConfirmDialog(venta,importe,iva,total){
     return this.dialog.open(TicketTemplateComponent,{
-      width:'390px',
+      width:'400px',
       disableClose:true,
       data:{
          sale:venta,
