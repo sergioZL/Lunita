@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path:'reportes',
     component:ReportesComponent
+  },
+  { path: '',
+    redirectTo: '/inventario',
+    pathMatch: 'full'
   }
 ];
 

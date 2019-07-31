@@ -32,4 +32,8 @@ export class ArticulosService {
   buscarPor(criterio){
     return this.http.post(`${this.url}buscarPor.php`,JSON.stringify(criterio));
   }
+
+  vender(venta){
+    return this.http.post(`${this.url}Ventas.php`,JSON.stringify(venta))
+  }
 }

@@ -85,34 +85,37 @@
         <th>Desc</th>
         <th class="d-none d-md-table-cell">Tipo</th>
         <th class="d-none d-md-table-cell">Departamento</th>
-        <th >Presio</th>
+        <th >$</th>
         <th >Cantidad</th>
         <th>Importe</th>
         <th>Del</th>
         <th>Select</th>
       </tr>
       </thead>
-      <tr *ngFor="let art of articulos">
+      <tr *ngFor="let art of articulos let i = index" [attr.data-index]="i">
         <td class="d-none d-md-table-cell">{{art.codigo}}</td>
         <td>{{art.descripcion}}</td>
         <td class="d-none d-md-table-cell">{{art.tipo}}</td>
         <td class="d-none d-md-table-cell">{{art.departamento}}</td>
         <td>${{art.presio}}</td>
-        <td>{{art.cantidad}}</td>
+        <td class="text-center">{{art.cantidad}}</td>
         <td class=" text-center">${{art.presio*art.cantidad}}</td>
-        <td><button mat-raised-button (click)="borrarDeLista(art)"><mat-icon>remove_circle_outline</mat-icon></button></td>
-        <td><button mat-raised-button (click)="seleccionar()"><mat-icon>check_box</mat-icon></button></td>        
+        <td><button mat-raised-button (click)="borrarDeLista(i)"><mat-icon>remove_circle_outline</mat-icon></button></td>
+        <td><button mat-raised-button (click)="seleccionar(art,i)"><mat-icon>check_box</mat-icon></button></td>        
       </tr>
       <tr>
-        <td colspan="6" class="table-primary"> IMPORTE:</td>
+        <td colspan="3" class="table-primary d-md-none d-sm-table-cell"> IMPORTE:</td>
+        <td colspan="6" class="table-primary d-none d-md-table-cell   "> IMPORTE:</td>
         <td class="table-secondary text-center">${{importe}}</td>
       </tr>
       <tr>
-        <td colspan="6" class="table-primary">IVA:</td>
+        <td colspan="3" class="table-primary d-md-none d-sm-table-cell">IVA:</td>
+        <td colspan="6" class="table-primary d-none d-md-table-cell   ">IVA:</td>
         <td class="table-secondary text-center">$ {{iva}}</td>
       </tr>
       <tr>
-        <td colspan="6" class="table-primary">TOTAL:</td>
+        <td colspan="3" class="table-primary d-md-none d-sm-table-cell">TOTAL:</td>
+        <td colspan="6" class="table-primary d-none d-md-table-cell   ">TOTAL:</td>
         <td class="table-secondary text-center">$ {{total}}</td>
       </tr>
     </table>

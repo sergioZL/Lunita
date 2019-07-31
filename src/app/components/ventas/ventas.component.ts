@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticulosService } from '../../services/articulos-service.service';
-
+import { LocalStorageService } from '../../services/local-storage.service';
+import { error } from 'util';
+import { DialogService } from 'src/app/services/dialog.service';
 @Component({
   selector: 'app-ventas',
   templateUrl: './ventas.component.html',
@@ -31,7 +33,7 @@ export class VentasComponent implements OnInit {
   seleccionada: string = this.opcionesBusqueda[0].opcion; //Almacena la opcion seleccionada en el primer mat option
   seleccion: string = '';//Almacena la opcion seleccionada en el segundo mat option
   tarticulos=null; //Almacena los articulos recibidos del servidor
-  articulos:Array<Object> = [];;//Almacena los articulos consultados al servidor por medio del metodo buscar
+  articulos:Array<Object> = [];//Almacena los articulos consultados al servidor por medio del metodo buscar
   articuloBuscado = null;
   total = 0;
   importe = 0;
@@ -53,7 +55,9 @@ export class VentasComponent implements OnInit {
     true,
     false
   ];
-  constructor(private articulosServicio: ArticulosService) { }
+  constructor( private articulosServicio: ArticulosService,
+               private localStorageService:LocalStorageService,
+               private dialogService:DialogService ) { }
 
   ngOnInit() {
     this.recuperarTodos();
@@ -63,8 +67,44 @@ export class VentasComponent implements OnInit {
     else return false;
     
   }
-  borrarDeLista(art){
-    this.articulos.splice(art);
+  limpiarLista(){
+    this.articulos = [];
+    this.importe = null;
+    this.iva = null;
+    this.total = null;
+  }
+
+  Vender(){
+    if( this.articulos != null && this.articulos.length > 0){
+      let venta={
+        usuario:this.localStorageService.obtener_localstorage(),
+        productos:this.articulos,
+        idventa:null
+      };
+      let sale:any;
+      this.articulosServicio.vender(venta).subscribe(result=>{
+        console.log(result);
+        sale = result;
+        this.dialogService.openConfirmDialog(sale,this.importe,this.iva,this.total)
+        .afterClosed().subscribe(result=>{
+
+          this.limpiarLista();
+        });
+        
+      },error=>{
+        console.log(error);
+      });
+    }else alert('¡Primero debes de agregar productos a la lista de venta!');
+  }
+
+  seleccionar(arti,index){
+    this.art = arti;
+    this.borrarDeLista(index);
+  }
+  borrarDeLista(indice){
+    let arti =this.articulos.splice(indice,1);
+    console.log(arti);
+    
   }
   cargarPorNombre(){
     if(this.art.descripcion != null){
@@ -117,9 +157,7 @@ export class VentasComponent implements OnInit {
       sw = true;
       i++;
     }
-    this.opcionesDescripciones[0].opciones = descripciones;
-    console.log(this.opcionesDescripciones);
-    
+    this.opcionesDescripciones[0].opciones = descripciones;    
   }
   Buscar(){
     let criterios={

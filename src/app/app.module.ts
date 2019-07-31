@@ -18,6 +18,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import {Component, Inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 //Componentes
 import { FooterComponent } from './shared/footer/footer.component';
@@ -30,6 +32,7 @@ import { ProductosComponent } from './components/inventario/productos/productos.
 import { RegProductosComponent } from './components/inventario/reg-productos/reg-productos.component';
 import { EditProductosComponent } from './components/inventario/edit-productos/edit-productos.component';
 import { BuscarPorComponent } from './components/inventario/buscar-por/buscar-por.component';
+import { TicketTemplateComponent } from './reportTemplates/ticket-template/ticket-template.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import { BuscarPorComponent } from './components/inventario/buscar-por/buscar-po
     ProductosComponent,
     RegProductosComponent,
     EditProductosComponent,
-    BuscarPorComponent
+    BuscarPorComponent,
+    TicketTemplateComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +58,7 @@ import { BuscarPorComponent } from './components/inventario/buscar-por/buscar-po
     MatInputModule,
     LayoutModule,
     MatToolbarModule,
+    MatDialogModule,  //Este modulo es para crear dialogs popup
     FormsModule,
     MatButtonModule,
     MatSidenavModule,
@@ -65,6 +70,7 @@ import { BuscarPorComponent } from './components/inventario/buscar-por/buscar-po
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[TicketTemplateComponent] //Agregar esto es necesario para que funcione el matdialog
 })
 export class AppModule { }
