@@ -33,6 +33,9 @@ import { RegProductosComponent } from './components/inventario/reg-productos/reg
 import { EditProductosComponent } from './components/inventario/edit-productos/edit-productos.component';
 import { BuscarPorComponent } from './components/inventario/buscar-por/buscar-por.component';
 import { TicketTemplateComponent } from './reportTemplates/ticket-template/ticket-template.component';
+import { DialogoConfirmacionComponent } from './shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { CorteComponent } from './reportTemplates/corte/corte.component';
+import { ReportInventarioComponent } from './components/reportes/report-inventario/report-inventario.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { TicketTemplateComponent } from './reportTemplates/ticket-template/ticke
     RegProductosComponent,
     EditProductosComponent,
     BuscarPorComponent,
-    TicketTemplateComponent
+    TicketTemplateComponent,
+    DialogoConfirmacionComponent,
+    CorteComponent,
+    ReportInventarioComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +77,6 @@ import { TicketTemplateComponent } from './reportTemplates/ticket-template/ticke
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[TicketTemplateComponent] //Agregar esto es necesario para que funcione el matdialog
+  entryComponents:[TicketTemplateComponent,CorteComponent] //Agregar esto es necesario para que funcione el matdialog
 })
 export class AppModule { }

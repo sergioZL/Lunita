@@ -3,7 +3,7 @@
     <button mat-icon-button>
       <mat-icon (click)="sidenav.toggle()" *ngIf="isHandset$ | async">menu</mat-icon>
     </button>
-    <h1><img src="../../assets/images/papas.png" alt="Lunita"  height="60" width="160" style="margin: 30px"></h1>
+    <h1><img src="/assets/images/papas.png" alt="Lunita"  height="60" width="160" style="margin: 30px"></h1>
     <span class="menu-spacer"></span>
     <div *ngIf="isntHandset$ | async">
       <a mat-button [routerLink]="'/inventario'"> Inventario </a>
@@ -33,7 +33,9 @@
   <mat-sidenav-content>
     <div style="height: 88vh;">
 
-      <router-outlet></router-outlet>
+      <router-outlet>
+        
+      </router-outlet>
       <footer>
         <app-footer></app-footer>
       </footer>

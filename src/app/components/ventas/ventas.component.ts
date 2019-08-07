@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticulosService } from '../../services/articulos-service.service';
 import { LocalStorageService } from '../../services/local-storage.service';
-import { error } from 'util';
 import { DialogService } from 'src/app/services/dialog.service';
+
 @Component({
   selector: 'app-ventas',
   templateUrl: './ventas.component.html',
   styleUrls: ['./ventas.component.css']
 })
+
 export class VentasComponent implements OnInit {
   buscador:boolean = true;
   //Contiene las opciones de busqueda para buscar productos en el inventario

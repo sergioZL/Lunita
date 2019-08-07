@@ -1,7 +1,8 @@
+
 <div class="content container m-2" #content>
-    <div class="contente-container">
+    <div class="content-container">
         <span class="content-span full-width" >
-            <h3 class="text-center">Frituras y botanas de Lunita</h3>
+            <h3 class="text-center"><img src="../../assets/images/papas.png" alt="Lunita"  height="60" width="160" style="margin: 30px"></h3>
             <br>
             <h4>Fecha: {{date | date:'yyyy-MM-dd'}}</h4>
             <br>
@@ -17,7 +18,7 @@
                    <th><small>CÓDIGO</small></th>
                    <th><small>CANTIDAD</small></th>
                    <th><small>DESCRIPCIÓN</small></th>
-                   <th><small>PRESIO</small></th>
+                   <th><small>PRECIO</small></th>
                </thead>
                <tbody>
                    <tr *ngFor="let producto of data.sale.productos">

@@ -1,1 +1,29 @@
-<p>reportes works!</p>
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab>
+        <ng-template mat-tab-label>
+            Reporte inventario
+        </ng-template>
+        <app-report-inventario></app-report-inventario>
+    </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            Corte de caja
+        </ng-template>
+        <div class="align-content-center">
+            <div class="contenedor">
+                <h4>Usted esta a punto de realizar un corte de caja...</h4>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h6 class="text-center">Presione aceptar para continuar</h6>
+                <button class="buscar mat-primary btn-primary" mat-raised-button (click)="cortarCaja()"><mat-icon>confirmation_number</mat-icon> Aceptar</button>
+
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

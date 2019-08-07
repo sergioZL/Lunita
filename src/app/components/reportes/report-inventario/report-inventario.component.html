@@ -1,0 +1,60 @@
+<div class="content container m-2" #content>
+    <div class="content-container">
+        <span class="content-span full-width" >
+            <h1 class="text-center "><img src="../../assets/images/papas.png" alt="Lunita"  height="60" width="160" style="margin: 30px">Reporte de Inventario</h1>
+            <h4 class="text-right ">Fecha: {{fecha | date:'yyyy-MM-dd'}}</h4>
+            <h4 class="text-right ">Hora: {{fecha | date:'HH:mm:ss'}}</h4>
+            <br>
+            <h3>Totales por producto</h3>
+            <table class="text-right table table-striped">
+                <thead>
+                    <th>Descripción</th>
+                    <th>Cantidad total en existencia</th>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let tot of totalesProdcutos">
+                        <td>{{tot.descripcion}}</td>
+                        <td>{{tot.total}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <br>
+            <h3>Totales por departamento</h3>
+            <table class="text-right table table-striped">
+                <thead>
+                    <th>Departamento</th>
+                    <th>Cantidad total en existencia</th>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let tot of totalesDepartamento">
+                        <td>{{tot.departamento}}</td>
+                        <td>{{tot.Total}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <br>
+            <h3>Productos por debajo del inventario</h3>
+            <table class="text-right table table-striped">
+                <thead>
+                    <th>Departamento</th>
+                    <th>En Inventario</th>
+                    <th>Minimo</th>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let tot of bajoInventario">
+                        <td>{{tot.descripcion}}</td>
+                        <td>{{tot.minimo}}</td>
+                        <td>{{tot.inventario}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </span>
+    </div>
+</div>
+<button mat-flat-button id="yes-button" (click)="downloadPDF()">Imprimir</button>
+<div class="d-none" id="download">
+        <img #canvas>
+        <a #downloadLink></a>
+</div>

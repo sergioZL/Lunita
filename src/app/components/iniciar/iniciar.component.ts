@@ -15,9 +15,10 @@ export class IniciarComponent implements OnInit {
   logear:boolean = true;
   usuarior = null;
   usuario ={
-    id:'1234',
+    id:'',
     nombre : '',
-    contrasena:''
+    contrasena:'',
+    horaEntrada: ''
   }
   segundacontrasena:'';
   constructor(private localstorageServicio: LocalStorageService,private usuariosService:UsuariosServiceService) { }
@@ -36,6 +37,13 @@ export class IniciarComponent implements OnInit {
           alert(result['mensaje'])
         }else { 
           this.usuarior = result[0];
+          this.usuario.nombre = this.usuarior.nombre;
+          this.usuario.id = this.usuarior.id;
+          this.usuario.contrasena = this.usuarior.contrasena;
+          let actual = new Date();
+          actual.setHours(actual.getHours()+5);//Comentar estas lineas antes de jenerar el dist
+          actual
+          this.usuario.horaEntrada = actual.getFullYear()+'-'+(actual.getMonth()+1)+'-'+actual.getDate()+' '+actual.getHours()+':'+actual.getMinutes()+':'+actual.getSeconds();          
           this.guardar_localStorage();
           this.mensaje = 'Bien venido '+this.usuario.nombre;
           this.open.emit(this.mensaje);
@@ -77,7 +85,7 @@ export class IniciarComponent implements OnInit {
    */
   guardar_localStorage(){
      if( this.usuario.nombre!='' && this.usuario.contrasena!='' ){
-      this.localstorageServicio.guardar_localstorage(this.usuarior);
+      this.localstorageServicio.guardar_localstorage(this.usuario);
       return true;
     }else{
       alert('Llene los campos correspondientes primero');
