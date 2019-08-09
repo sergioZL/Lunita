@@ -4,6 +4,7 @@ import { InventarioComponent } from './components/inventario/inventario.componen
 import { RepartidoresComponent } from './components/repartidores/repartidores.component';
 import { VentasComponent } from './components/ventas/ventas.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
+import { MapComponentComponent } from './components/map-component/map-component.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path:'reportes',
     component:ReportesComponent
+  },
+  {
+    path:'mapas',
+    component:MapComponentComponent
   },
   { path: '',
     redirectTo: '/inventario',

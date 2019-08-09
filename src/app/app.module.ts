@@ -36,6 +36,9 @@ import { TicketTemplateComponent } from './reportTemplates/ticket-template/ticke
 import { DialogoConfirmacionComponent } from './shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { CorteComponent } from './reportTemplates/corte/corte.component';
 import { ReportInventarioComponent } from './components/reportes/report-inventario/report-inventario.component';
+import { MapComponentComponent } from './components/map-component/map-component.component';
+
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,8 @@ import { ReportInventarioComponent } from './components/reportes/report-inventar
     TicketTemplateComponent,
     DialogoConfirmacionComponent,
     CorteComponent,
-    ReportInventarioComponent
+    ReportInventarioComponent,
+    MapComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +77,9 @@ import { ReportInventarioComponent } from './components/reportes/report-inventar
     MatTabsModule,
     MatListModule,
     MatCardModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAutAuZ2VxnhUDMI3hbL9Rs7iP-X48-8gg'
+    }),
     HttpClientModule
   ],
   providers: [],
