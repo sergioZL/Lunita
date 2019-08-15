@@ -1,5 +1,14 @@
+
 <div class="contenedor">
+
     <mat-card>
+        <div class="alert alert-warning alert-dismissible fade show row" role="alert">
+            <p class="col-11"><strong>Aquí agregaras un nuevo producto!</strong> Si deseas 
+                aumentar existencias de un producto seleccionalo en la ventana productos.</p>
+              <button type="button" class="close col-1" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
         <mat-form-field class="text-center" >
           <input matInput [(ngModel)]="art.codigo" type="number" placeholder="Codigo">
         </mat-form-field>
@@ -20,6 +29,9 @@
         </mat-form-field>
         <mat-form-field class="text-center" >
             <input matInput type="number" [(ngModel)]="art.minimo" placeholder="minimo">
+        </mat-form-field>
+        <mat-form-field class="text-center" >
+            <input matInput type="number" [(ngModel)]="art.existencias" placeholder="Cantidad">
         </mat-form-field>
         <mat-form-field class="text-center" >
             <input matInput [(ngModel)]="art.departamento" placeholder="Departamento">

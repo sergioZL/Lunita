@@ -1,7 +1,7 @@
 <span>¿Desea imprimir el corte? </span>
 <button mat-flat-button id="no-button" [mat-dialog-close]="false">NO</button>
 <button mat-flat-button id="yes-button" (click)="downloadPDF()">SI</button>
-<div class="content container " #content>
+<div class="contenedor content container " #content>
     <div class="content-container">
         <span class="content-span full-width" >
             <h3 class="text-center"><img src="/assets/images/papas.png" alt="Lunita"  height="60" width="160" style="margin: 30px"></h3>
@@ -11,35 +11,13 @@
             <h6>Hora fin: {{data.fin | date:'HH:mm:ss'}}</h6>
             <h6>Usuario: {{data.usuario}}</h6>
             <hr>
-            <h6>Entradas</h6>
-            <table class="table table-borderless" id=”my-table” >
-               <thead>
-                   <th><small>VENTA</small></th>
-                   <th><small>CANTIDAD PRODUCTOS</small></th>
-                   <th><small>ENTRADA</small></th>
-               </thead>
-               <tbody>
-                   <tr *ngFor="let producto of data.ventas">
-                       <td>{{producto.Venta}}</td>
-                       <td>{{producto.Cantidad}}</td>
-                       <td>{{producto.Entradas}}</td>
-                   </tr>
-               </tbody>
-            </table>
             <hr>
-            <h6>Salidas</h6>
             <table class="table table-borderless" id=”my-table” >
                <thead>
-                   <th><small>CÓDIGO</small></th>
-                   <th><small>DESCRIPCIÓN</small></th>
-                   <th><small>COSTO</small></th>
+
                </thead>
                <tbody>
-                   <tr *ngFor="let producto of data.compras">
-                       <td>{{producto.codigo}}</td>
-                       <td>{{producto.descripcion}}</td>
-                       <td>{{producto.costo}}</td>
-                   </tr>
+
                </tbody>
             </table>
         </span>

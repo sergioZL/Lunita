@@ -10,7 +10,7 @@ import * as html2canvas from 'html2canvas';
 export class ReportInventarioComponent implements OnInit {
   fecha = new Date();
   totalesProdcutos = null;
-  bajoInventario:Array<Object> = [];
+  bajoInventario = null;
   totalesDepartamento = null;
   
   constructor(private servicioReportes:ReportesService) { }
@@ -23,30 +23,8 @@ export class ReportInventarioComponent implements OnInit {
       this.totalesDepartamento = result
     });
     this.servicioReportes.productosBajoInventario().subscribe(result=>{
-      //console.log(result);
-      
-      let productos = result['productos'];
-      let minimos = result['minimos'];
-      for (let index = 0; index < minimos.length ; index++) {
-        const element = minimos[index];
-        //console.log(element['total']);
-        
-        for (let i = 0; i < minimos.length; i++) {
-          const elemento = productos[i];
-          if ( element['descripcion'] == elemento['descripcion'] ) {
-            if (element['minnimo'] > elemento['total']){
-              let nuevo = {
-                descripcion:elemento['descripcion'],
-                inventario:elemento['total'],
-                minimo:element['minnimo']
-              }
-              this.bajoInventario.push(nuevo);
-            }
-          }
-        }
-      }
-      console.log(this.bajoInventario);
-      
+      console.log(result);
+      this.bajoInventario = result;
     });
   }
 

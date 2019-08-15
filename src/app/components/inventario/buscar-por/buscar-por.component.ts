@@ -36,7 +36,9 @@ export class BuscarPorComponent implements OnInit {
     menudeo:null,
     tipo:null,
     minimo:null,
-    departamento:null
+    departamento:null,
+    idUsuario:null,
+    existencias:null
   }
 
   constructor(private articulosServicio: ArticulosService) {
@@ -51,7 +53,6 @@ export class BuscarPorComponent implements OnInit {
     }
     this.articulosServicio.buscarPor(criterios).subscribe(result=>{
       this.articulos = result;
-      
     })
   }
   hayRegistros() {

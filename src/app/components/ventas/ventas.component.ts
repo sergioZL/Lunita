@@ -49,7 +49,8 @@ export class VentasComponent implements OnInit {
     minimo:null,
     departamento:null,
     presio:null,
-    cantidad:null
+    cantidad:null,
+    existencias:null
   }
   radioSelect:boolean = true;
   radioButons = [
@@ -66,7 +67,6 @@ export class VentasComponent implements OnInit {
   hayRegistros() {
     if(this.articulos!=null)return true;
     else return false;
-    
   }
   limpiarLista(){
     this.articulos = [];
@@ -122,34 +122,47 @@ export class VentasComponent implements OnInit {
     }
   }
   Agregar(){
-    if(this.art.cantidad<10)this.art.presio=this.art.menudeo;
-    else this.art.presio=this.art.mayoreo;
-    this.importe = this.importe+(this.art.presio*this.art.cantidad);
-    this.iva = (this.importe*16)/100;
-    this.total = this.importe+this.iva;
-    this.articulos.push(this.art);
-    this.art={
-      codigo:null,
-      descripcion:null,
-      costo:null,
-      mayoreo:null,
-      menudeo:null,
-      tipo:null,
-      minimo:null,
-      departamento:null,
-      presio:null,
-      cantidad:null
-    }
+    if( this.art.cantidad < this.art.existencias  ){
+
+      if( this.art.cantidad  < 10 )  this.art.presio = this.art.menudeo;
+
+      else this.art.presio  = this.art.mayoreo;
+
+      this.importe = this.importe + ( this.art.presio * this.art.cantidad );
+      this.iva = (  this.importe  * 16  ) / 100;
+      this.total = this.importe+this.iva;
+      
+      this.articulos.push(  this.art );
+      this.art  = {
+        codigo:null,
+        descripcion:null,
+        costo:null,
+        mayoreo:null,
+        menudeo:null,
+        tipo:null,
+        minimo:null,
+        departamento:null,
+        presio:null,
+        cantidad:null,
+        existencias:null
+      }
+      this.Buscar();
+    }else alert('Por el momento no disponemos de esa cantidad de '+this.art.descripcion+' en el inventario');
   }
   cargarNombres(){
     let i =0;
     let sw;
     let descripciones: Array<Object> = [];
-    descripciones.push(this.articuloBuscado[i]);
-    while(this.articuloBuscado[i]!=null){
-      for(let j = 0 ; j < descripciones.length ; j++ ){
-        for (var key in descripciones[j]) {  
-            if(descripciones[j][key] == this.articuloBuscado[ i ].descripcion ){
+
+    descripciones.push( this.articuloBuscado[ i ] );
+    
+    while(  this.articuloBuscado[i] != null ){
+    
+      for(  let j = 0 ; j < descripciones.length ; j++ ){
+    
+        for ( var key in descripciones[j] ) {
+            
+            if( descripciones[j][key] == this.articuloBuscado[ i ].descripcion ){
               sw = false;  
             }
         }

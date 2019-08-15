@@ -30,6 +30,8 @@ export class ProductosComponent implements OnInit {
   }
   recuperarTodos() {
     this.articulosServicio.recuperarTodos().subscribe(result =>{ 
+      console.log(result);
+      
       this.articulos = result;
     });
   }

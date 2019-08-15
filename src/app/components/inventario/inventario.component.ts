@@ -3,6 +3,7 @@ import {FormControl} from '@angular/forms';
 import { LocalStorageService } from '../../services/local-storage.service';
 import{ EditProductosComponent } from './edit-productos/edit-productos.component';
 import { ProductosComponent } from './productos/productos.component';
+import { RegProductosComponent } from "./reg-productos/reg-productos.component";
 import {MatIconModule} from '@angular/material/icon'
 
 @Component({
@@ -13,6 +14,7 @@ import {MatIconModule} from '@angular/material/icon'
 export class InventarioComponent implements OnInit {
   @ViewChild('editar', null) ventanaEditar: EditProductosComponent; //sirve para acceder a los metodos del componente
   @ViewChild('productos', null) ventanaProductos: ProductosComponent;
+  @ViewChild('registrar', null) ventanaRegistrar: RegProductosComponent;
   selected = new FormControl(0); // define a FormControl with value 0. Value means index.
   art={
     codigo:null,
@@ -35,7 +37,7 @@ export class InventarioComponent implements OnInit {
   } 
   returnTab(t) {
     this.actualizar(); //Actualiza los productos de la lista 
-    this.selected.setValue(this.selected.value-2); //Canbia el mat-tab mostrado en pantalla por el de productos
+    this.selected.setValue(0); //Canbia el mat-tab mostrado en pantalla por el de productos
   } 
   actualizar(){
     this.ventanaProductos.recuperarTodos();//manda llamar el metodo recuperar todos del componente hijo

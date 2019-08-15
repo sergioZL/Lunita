@@ -1,25 +1,25 @@
 <mat-tab-group mat-align-tabs="center" [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
         <mat-tab label="Tab 1">
-          <ng-template mat-tab-label>
-              <mat-icon> list_alt</mat-icon>
+          <ng-template mat-tab-label >
+              <mat-icon title="Ventana productos"> list_alt</mat-icon>
           </ng-template>
           <app-productos (regresarSeleccion)="changeTab($event)" #productos></app-productos>
         </mat-tab>
-        <mat-tab label="Tab 2">
+        <mat-tab label="Tab 2" >
           <ng-template mat-tab-label>
-            <mat-icon>add_box</mat-icon>
+            <mat-icon title="Agregar nuevo producto">add_box</mat-icon>
           </ng-template>
-          <app-reg-productos></app-reg-productos>
+          <app-reg-productos (actulizar)="returnTab($event)" #registrar></app-reg-productos>
         </mat-tab>
         <mat-tab label="Tab 3">
           <ng-template mat-tab-label>
-            <mat-icon> border_color</mat-icon>
+            <mat-icon title="Editar producto"> border_color</mat-icon>
           </ng-template>
            <app-edit-productos (actulizar)="returnTab($event)" #editar></app-edit-productos>
         </mat-tab>
         <mat-tab label="Tab 1">
           <ng-template mat-tab-label>
-              <mat-icon>search</mat-icon>
+              <mat-icon title="Buscar productos" >search</mat-icon>
           </ng-template>
           <app-buscar-por></app-buscar-por>
         </mat-tab>

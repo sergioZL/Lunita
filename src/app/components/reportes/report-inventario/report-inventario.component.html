@@ -38,15 +38,15 @@
             <h3>Productos por debajo del inventario</h3>
             <table class="text-right table table-striped">
                 <thead>
-                    <th>Departamento</th>
+                    <th>Descripción</th>
                     <th>En Inventario</th>
                     <th>Minimo</th>
                 </thead>
                 <tbody >
                     <tr *ngFor="let tot of bajoInventario">
                         <td>{{tot.descripcion}}</td>
+                        <td>{{tot.existencias}}</td>
                         <td>{{tot.minimo}}</td>
-                        <td>{{tot.inventario}}</td>
                     </tr>
                 </tbody>
             </table>
