@@ -1,11 +1,14 @@
 <div class="row">
     <mat-card class="col-md-4 col-sm-12 text-center">
-        <span>¿Como desea buscar productos para la venta?</span>
-        <br>
-        <button mat-raised-button (click)="buscador = true"><mat-icon>search</mat-icon>Usar buscador</button>
-        <button mat-raised-button (click)="buscador = !buscador"><mat-icon>keyboard</mat-icon> Por nombre ó codigo</button>
-    
-        <div *ngIf="buscador">
+        <div class="alert alert-warning alert-dismissible fade show row" role="alert">
+            <p class="col-11"> Seleccione el producto que desea vender por medio de los 
+              siguientes criterios de busqueda
+            </p>
+              <button type="button" class="close col-1" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+        <div >
             <mat-form-field>
                 <mat-select placeholder="Opciones" [(ngModel)]="seleccionada" name="operacion">
                   <mat-option *ngFor="let op of opcionesBusqueda" [value]="op.opcion">
@@ -32,21 +35,6 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-        </div>
-        <div *ngIf="!buscador">
-            <mat-radio-group name="opciones" [(ngModel)]="radioSelect">
-              <mat-radio-button *ngFor="let op of radioButons" name="opciones" [value]="op" style="margin: 10px">
-                <span *ngIf="op">nombre</span>
-                <span *ngIf="!op">codigo</span>
-              </mat-radio-button>
-            </mat-radio-group>
-            <mat-form-field *ngIf="radioSelect" class="text-center" >
-                    <input matInput [(ngModel)]="art.descripcion" type="text" placeholder="Nombre del producto">
-            </mat-form-field>
-            <mat-form-field *ngIf="!radioSelect" class="text-center" >
-                    <input matInput [(ngModel)]="art.codigo" type="number" placeholder="código del producto" >
-            </mat-form-field>
-            <button class="buscar mat-primary" mat-raised-button (click)="cargarPorNombre()"><mat-icon>done_outline</mat-icon></button>
         </div>
           <hr>
         <div *ngIf="art.codigo != null">
