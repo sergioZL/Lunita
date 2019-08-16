@@ -29,10 +29,12 @@ export class ReportesComponent implements OnInit {
       fin:actual.getFullYear()+'-'+(actual.getMonth()+1)+'-'+actual.getDate()+' '+actual.getHours()+':'+actual.getMinutes()+':'+actual.getSeconds()
     };
     this.servicioReportes.corteReport(fechas).subscribe(response=>{
-      this.dialogService.abrirCorte(usuario.nombre,inicio,actual,response['entradas'],response['salidas']);
+      console.log(response);
+      this.dialogService.abrirCorte(usuario.nombre,inicio,actual,response['totalEntradas'],response['totalSalidas'],response['totalventas']);
       usuario.horaEntrada = fechas.fin;
       this.localservicio.borrar_localstorage();
       this.localservicio.guardar_localstorage(usuario);
+      
     });
   }
 

@@ -14,10 +14,54 @@
             <hr>
             <table class="table table-borderless" id=”my-table” >
                <thead>
-
+                <th></th>
+                <th></th>
+                <th></th>
                </thead>
                <tbody>
-
+                <tr>
+                    <td colspan="2">Ventas realizadas:</td>
+                    <td>{{data.ventasTotales[0].ventas}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Compras realizadas:</td>
+                    <td>{{data.compras[0].cantidad}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Productos vendidos:</td>
+                    <td>{{data.ventas[0].productosVendidos}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Productos comprados:</td>
+                    <td>{{data.compras[0].cantidad}}</td>
+                </tr>
+               </tbody>
+            </table>
+            <hr>
+            <hr>
+            <table class="table table-borderless" id=”my-table” >
+               <thead>
+                <th></th>
+                <th></th>
+                <th></th>
+               </thead>
+               <tbody>
+                <tr>
+                    <td colspan="2">Dinero ingresado:</td>
+                    <td>${{data.ventas[0].productosVendidos * data.ventas[0].precio}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Salidas de caja:</td>
+                    <td>${{data.compras[0].gasto}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Ganancias por ventas:</td>
+                    <td>${{data.ventas[0].productosVendidos * data.ventas[0].ganancias}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Dinero en caja:</td>
+                    <td>${{(data.ventas[0].productosVendidos * data.ventas[0].precio)-data.compras[0].gasto}}</td>
+                </tr>
                </tbody>
             </table>
         </span>

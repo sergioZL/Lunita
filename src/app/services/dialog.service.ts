@@ -22,7 +22,7 @@ export class DialogService {
       }
     });
   }
-  abrirCorte(usr,inicio,fin,ventas,compras){
+  abrirCorte(usr,inicio,fin,ventas,compras,totalVentas){
     this.dialog.open(CorteComponent,{
       width:'400px',
       disableClose:true,
@@ -31,7 +31,8 @@ export class DialogService {
          inicio:inicio,
          fin:fin,
          ventas:ventas,
-         compras:compras
+         compras:compras,
+         ventasTotales:totalVentas
       }
     });
   }
