@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticulosService } from '../../../services/articulos-service.service';
 
+/**Autor: Sergio Alejandro Bustamante Arizmendi
+ * Proyecto: punto de venta
+ */
+
 @Component({
   selector: 'app-buscar-por',
   templateUrl: './buscar-por.component.html',
   styleUrls: ['./buscar-por.component.css']
 })
 export class BuscarPorComponent implements OnInit {
-  //Contiene las opciones de busqueda para buscar productos en el inventario
+  //Muestra las opciones para buscar productos
   opcionesBusqueda=[
     {
       opcion:'Departamento',
@@ -24,11 +28,13 @@ export class BuscarPorComponent implements OnInit {
       ]
     }
   ];
-  seleccionada: string = this.opcionesBusqueda[0].opcion; //Almacena la opcion seleccionada en el primer mat option
-  seleccion: string = '';//Almacena la opcion seleccionada en el segundo mat option
+
+
+  seleccionada: string = this.opcionesBusqueda[0].opcion; //Almacena la opción seleccionada en la primera opción
+  seleccion: string = '';//Almacena la opción seleccionada en la segunda opción
   tarticulos=null; //Almacena los articulos recibidos del servidor
-  articulos=null;//Almacena los articulos consultados al servidor por medio del metodo buscar
-  art={//Guarda la información de un articulo seleccionado
+  articulos=null;//Almacena los artículos consultados al servidor
+  art={//Guarda la información del articulo seleccionado
     codigo:null,
     descripcion:null,
     costo:null,
