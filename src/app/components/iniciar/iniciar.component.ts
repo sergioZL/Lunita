@@ -1,3 +1,11 @@
+/**
+ * autor:  Sergio Zermeño López 
+ * fecha:   5/8/2019
+ * proyecto: Este es un componente del proyecto Lunita (proyecto final de programación de quinto 
+ *           cuatrimestre)
+ * 
+ */
+
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { UsuariosServiceService } from "../../services/usuarios-service.service";
@@ -9,18 +17,18 @@ import { UsuariosServiceService } from "../../services/usuarios-service.service"
 })
 export class IniciarComponent implements OnInit {
   
-  @Input() valor:boolean ;
-  mensaje:string = '';
-  @Output() open = new EventEmitter();
-  logear:boolean = true;
-  usuarior = null;
-  usuario ={
+  @Input() valor:boolean ;//Este es un balor enviado por el componente padre que valida si el usuario tiene sesion avierta
+  mensaje:string = '';//Es el mensaje que se le mostrara al usuario una vez que inicie sesion
+  @Output() open = new EventEmitter();//Es es un evento que se envia al componente padre y sirve para iniciar sesion
+  logear:boolean = true;//sirve para indicar si el usuario tiene cuenta o requiere crear una
+  usuarior = null; //objeto que contendra los datos de usuario recibidos del servidor
+  usuario ={//contiene los datos ingresados por el usuario en el formulario
     id:'',
     nombre : '',
     contrasena:'',
     horaEntrada: ''
   }
-  segundacontrasena:'';
+  segundacontrasena:'';//sirve para validar la contraseña ingresada por el usuario al registrarse
   constructor(private localstorageServicio: LocalStorageService,private usuariosService:UsuariosServiceService) { }
 
   ngOnInit() {
