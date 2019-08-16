@@ -2,8 +2,29 @@
 
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng">
-    
+<agm-map [latitude]="lat1" [longitude]="lng1">
+  <agm-marker [latitude]="lat1" [longitude]="lng1" 
+  [label]="{ color: 'white', text: 'Abarrotes Paola General Pánfilo Natera #1102' }"
+  >
+  </agm-marker>
+  <agm-marker [latitude]="lat2" [longitude]="lng2" 
+  [label]="{ color: 'white', text: 'Frituras y botanas de Lunita articulo 123 #518 ' }"
+  >
+  </agm-marker>
+  <agm-marker [latitude]="lat3" [longitude]="lng3" 
+  [label]="{ color: 'white', text: 'Abarrotes Karla General Panfilo Natera #51' }"
+  >
+  </agm-marker>
+  <agm-marker [latitude]="lat4" [longitude]="lng4" 
+  [label]="{ color: 'white', text: 'Abarrotes en Casa Rosa Campana de la Libertad #235' }"
+  >
+  </agm-marker>
+  <agm-marker [latitude]="lat5" [longitude]="lng5" 
+  [label]="{ color: 'white', text: 'Dulcería Los Almaraz Atículo 18 #910' }"
+  >
+  </agm-marker>
+  <agm-marker [latitude]="lat6" [longitude]="lng6" 
+  [label]="{ color: 'white', text: 'Mariscos el Amigo JR  Av. Constitución 1137' }"
+  >
   </agm-marker>
 </agm-map>
