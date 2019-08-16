@@ -2,13 +2,17 @@ import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { ArticulosService } from '../../../services/articulos-service.service';
 import { LocalStorageService } from '../../../services/local-storage.service';
 
+/**Autor: Sergio Alejandro Bustamante Arizmendi
+ * Proyecto: punto de venta
+ */
+
 @Component({
   selector: 'app-edit-productos',
   templateUrl: './edit-productos.component.html',
   styleUrls: ['./edit-productos.component.css']
 })
 export class EditProductosComponent implements OnInit {
-  @Output() actulizar = new EventEmitter();//Emite un mensaje para que sea captado por el conponente padre
+  @Output() actulizar = new EventEmitter();
   mensaje:string ='actualizado';
   art={
     codigo:null,
@@ -27,6 +31,8 @@ export class EditProductosComponent implements OnInit {
   constructor(private articulosServicio: ArticulosService,private localStorageService:LocalStorageService) {
 
   }
+
+  //modifica la información de los productos
 
   ngOnInit() {  
   }

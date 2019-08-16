@@ -2,6 +2,10 @@ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { ArticulosService } from '../../../services/articulos-service.service';
 import { LocalStorageService } from '../../../services/local-storage.service';
 
+/**Autor: Sergio Alejandro Bustamante Arizmendi
+ * Proyecto: punto de venta
+ */
+
 @Component({
   selector: 'app-reg-productos',
   templateUrl: './reg-productos.component.html',
@@ -27,6 +31,8 @@ export class RegProductosComponent implements OnInit {
 
   constructor(private articulosServicio: ArticulosService, private localStorageService:LocalStorageService) {}
 
+
+  //Almacena la información del producto ingresada en cada campo
 
   ngOnInit() {
   }

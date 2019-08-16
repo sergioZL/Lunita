@@ -1,6 +1,10 @@
 import { Component, OnInit,Output,EventEmitter} from '@angular/core';
 import { ArticulosService } from '../../../services/articulos-service.service';
 
+/**Autor: Sergio Alejandro Bustamante Arizmendi
+ * Proyecto: punto de venta
+ */
+
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -25,6 +29,8 @@ export class ProductosComponent implements OnInit {
 
   constructor(private articulosServicio: ArticulosService) {}
 
+  //Muestra listado de productos
+
   ngOnInit() {
     this.recuperarTodos();
   }
@@ -35,6 +41,9 @@ export class ProductosComponent implements OnInit {
       this.articulos = result;
     });
   }
+
+  //Muestra un producto específico
+
   seleccionar(codigo) {
     this.articulosServicio.seleccionar(codigo).subscribe(result => {
       this.art = result[0]
@@ -48,6 +57,9 @@ export class ProductosComponent implements OnInit {
     else return false;
     
   } 
+
+  //Elimina un producto
+
   baja(codigo) {
     this.articulosServicio.baja(codigo).subscribe(datos => {
       if (datos['resultado']=='OK') {
